@@ -1,4 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:MessageMeApp/db.dart' as db;
+import 'package:MessageMeApp/model/group.dart';
 import 'package:flutter/material.dart';
 
 class GroupPage extends StatelessWidget {
@@ -9,19 +10,23 @@ class GroupPage extends StatelessWidget {
         title: Text("MessageMeApp"),
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection("groups").snapshots(),
-        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        stream: db.getGroups(),
+        builder: (context, AsyncSnapshot<List<Group>> snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text(snapshot.error.toString()),
+            );
+          }
           if (!snapshot.hasData) {
             return Center(
               child: CircularProgressIndicator(),
             );
           }
-          List<DocumentSnapshot> docs = snapshot.data.docs;
+          List<Group> groups = snapshot.data;
           return ListView.builder(
-            itemCount: docs.length,
+            itemCount: groups.length,
             itemBuilder: (context, index) {
-              Map getDocs = docs[index].data();
-              return ListTile(title: Text(getDocs['name']));
+              return ListTile(title: Text(groups[index].name));
             },
           );
         },
