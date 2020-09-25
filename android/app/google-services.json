@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "901632353471",
+    "firebase_url": "https://messagemeapp-33515.firebaseio.com",
+    "project_id": "messagemeapp-33515",
+    "storage_bucket": "messagemeapp-33515.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901632353471:android:f2430da8da4cb9b75b120a",
+        "android_client_info": {
+          "package_name": "com.example.MessageMeApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901632353471-c0j1e7p6rurahjv5fj60qs3bc26hbrj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAom6N4A_qCTZ3ipAwMCVqDfiS4JQwUjcE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901632353471-c0j1e7p6rurahjv5fj60qs3bc26hbrj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
