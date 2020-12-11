@@ -1,6 +1,8 @@
 import 'package:MessageMeApp/db.dart' as db;
 import 'package:MessageMeApp/model/group.dart';
 import 'package:MessageMeApp/widgets/group_tile.dart';
+import 'package:MessageMeApp/widgets/loading.dart';
+import 'package:MessageMeApp/widgets/red_error.dart';
 import 'package:flutter/material.dart';
 
 class GroupPage extends StatelessWidget {
@@ -14,14 +16,10 @@ class GroupPage extends StatelessWidget {
         stream: db.getGroups(),
         builder: (context, AsyncSnapshot<List<Group>> snapshot) {
           if (snapshot.hasError) {
-            return Center(
-              child: Text(snapshot.error.toString()),
-            );
+            return RedError(snapshot.error);
           }
           if (!snapshot.hasData) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
+            return Loading();
           }
           List<Group> groups = snapshot.data;
           return ListView.separated(

@@ -24,6 +24,9 @@ class GroupTile extends StatelessWidget {
         ],
       ),
       subtitle: Text(group.id),
+      onTap: () => {
+        Navigator.of(context).pushNamed('/chat', arguments: group),
+      },
     );
   }
 }
