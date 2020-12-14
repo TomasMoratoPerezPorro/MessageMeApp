@@ -2,6 +2,7 @@ import 'package:MessageMeApp/db.dart' as db;
 import 'package:MessageMeApp/model/group.dart';
 import 'package:MessageMeApp/model/message.dart';
 import 'package:MessageMeApp/widgets/loading.dart';
+import 'package:MessageMeApp/widgets/message_box.dart';
 import 'package:MessageMeApp/widgets/message_list.dart';
 import 'package:MessageMeApp/widgets/red_error.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,14 @@ class ChatPage extends StatelessWidget {
           if (!snapshot.hasData) {
             return Loading();
           }
-          return MessageList(messages: snapshot.data);
+          return Column(
+            children: [
+              Expanded(child: MessageList(messages: snapshot.data)),
+              MessageBox(onSend: (text) {
+                print(text);
+              })
+            ],
+          );
         },
       ),
     );
