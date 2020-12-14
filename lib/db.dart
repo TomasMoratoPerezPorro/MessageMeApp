@@ -13,6 +13,13 @@ Stream<List<Group>> getGroups() {
 Stream<List<Message>> getGroupsMessages(String groupID) {
   return FirebaseFirestore.instance
       .collection('groups/$groupID/messages')
+      .orderBy('dateTime', descending: true)
       .snapshots()
       .map(toMessageList);
+}
+
+Future<void> sendMessage(String groupId, Message msg) async {
+  await FirebaseFirestore.instance
+      .collection('groups/$groupId/messages')
+      .add(msg.toFirestore());
 }
