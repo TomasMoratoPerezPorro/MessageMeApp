@@ -1,5 +1,5 @@
 import 'package:MessageMeApp/pages/chat_page.dart';
-import 'package:MessageMeApp/pages/group_page.dart';
+import 'package:MessageMeApp/pages/group_list_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class MessageMeApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (_) => GroupPage(),
+        '/': (_) => GroupListPage(),
         '/chat': (_) => ChatPage(),
       },
     );

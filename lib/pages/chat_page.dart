@@ -1,8 +1,8 @@
-import 'package:MessageMeApp/db.dart';
-import 'package:MessageMeApp/model/group.dart';
 import 'package:MessageMeApp/db.dart' as db;
+import 'package:MessageMeApp/model/group.dart';
 import 'package:MessageMeApp/model/message.dart';
 import 'package:MessageMeApp/widgets/loading.dart';
+import 'package:MessageMeApp/widgets/message_list.dart';
 import 'package:MessageMeApp/widgets/red_error.dart';
 import 'package:flutter/material.dart';
 
@@ -23,16 +23,7 @@ class ChatPage extends StatelessWidget {
           if (!snapshot.hasData) {
             return Loading();
           }
-          List<Message> messages = snapshot.data;
-          return ListView.builder(
-            itemCount: messages.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(messages[index].text),
-                subtitle: Text(messages[index].dateTime.toString()),
-              );
-            },
-          );
+          return MessageList(messages: snapshot.data);
         },
       ),
     );
