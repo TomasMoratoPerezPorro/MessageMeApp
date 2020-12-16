@@ -15,6 +15,9 @@ class Message {
       };
 
   Message(this.text) : dateTime = DateTime.now();
+
+  String get hhmm =>
+      '${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}';
 }
 
 List<Message> toMessageList(QuerySnapshot query) {

@@ -25,13 +25,24 @@ class ChatPage extends StatelessWidget {
           if (!snapshot.hasData) {
             return Loading();
           }
-          return Column(
+          return Stack(
             children: [
-              Expanded(child: MessageList(messages: snapshot.data)),
-              MessageBox(onSend: (text) {
-                print(text);
-                db.sendMessage(group.id, Message(text));
-              })
+              LayoutBuilder(builder: (context, BoxConstraints constrains) {
+                return Image.asset(
+                  'assets/bgchat.png',
+                  width: constrains.maxWidth,
+                  fit: BoxFit.cover,
+                );
+              }),
+              Column(
+                children: [
+                  Expanded(child: MessageList(messages: snapshot.data)),
+                  MessageBox(onSend: (text) {
+                    print(text);
+                    db.sendMessage(group.id, Message(text));
+                  })
+                ],
+              ),
             ],
           );
         },
